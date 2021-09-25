@@ -12,8 +12,14 @@ ajustaTela()
 
 
 function posicao_Randomica_Mosquito(){
-  var posicaoX = Math.floor(Math.random() * largura) -90
-  var posicaoY = Math.floor(Math.random() * altura) -90
+
+  //remover mosquito anterior caso exista
+  if(document.getElementById('mosquito')){
+    document.getElementById('mosquito').remove()
+  }
+
+  var posicaoX = Math.floor(Math.random() * largura) -100
+  var posicaoY = Math.floor(Math.random() * altura) -100
 
   posicaoX = posicaoX < 0 ? 0 : posicaoX
   posicaoY = posicaoY < 0 ? 0 : posicaoY
@@ -23,12 +29,17 @@ function posicao_Randomica_Mosquito(){
   //criar elemento html
   var mosquito = document.createElement('img')
   mosquito.src = 'imagens/mosquito.png'
-  mosquito.className = mudaTamanho()
+  mosquito.className = mudaTamanho() + ' ' + ladoALadoB()
   mosquito.style.left = posicaoX + 'px'
   mosquito.style.top = posicaoY + 'px'
   mosquito.style.position = 'absolute'
+  mosquito.id = 'mosquito'
 
   document.body.appendChild(mosquito)
+  
+  ladoALadoB()
+  console.log(ladoALadoB())
+
 
   mudaTamanho()
   console.log(mudaTamanho())
@@ -44,4 +55,15 @@ function mudaTamanho(){
   }else {
     return 'mosquito3'
   }
-}  
+}
+
+function ladoALadoB(){
+  var classe = Math.floor(Math.random() * 2)
+  //console.log(classe)
+  switch(classe) {
+    case 0:
+      return 'ladoA'
+    case 1:
+      return 'ladoB'
+  }
+}
