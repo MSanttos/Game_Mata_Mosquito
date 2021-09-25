@@ -1,4 +1,12 @@
-.mosquito{
+.mosquito1{
   height: 50px;
   width: 50px;
+}
+.mosquito2{
+  height: 100px;
+  width: 100px;
+}
+.mosquito3{
+  height: 200px;
+  width: 200px;
 }
