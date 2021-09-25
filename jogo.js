@@ -1,5 +1,6 @@
 var altura = 0
 var largura = 0
+var vidas = 1
 
 function ajustaTela(){
   altura = window.innerHeight
@@ -16,6 +17,15 @@ function posicao_Randomica_Mosquito(){
   //remover mosquito anterior caso exista
   if(document.getElementById('mosquito')){
     document.getElementById('mosquito').remove()
+
+    //após executar essa instrução vem o auto incremento de mais uma unidade dessa variável
+    console.log('v' + vidas)
+    if(vidas > 3){
+      alert('Uhm... que pena, GAME OVER')
+    }else{
+      document.getElementById('v' + vidas).src ="imagens/coracao_vazio.png"
+      vidas++
+    }
   }
 
   var posicaoX = Math.floor(Math.random() * largura) -100
@@ -34,6 +44,11 @@ function posicao_Randomica_Mosquito(){
   mosquito.style.top = posicaoY + 'px'
   mosquito.style.position = 'absolute'
   mosquito.id = 'mosquito'
+  mosquito.onclick = function() {
+    console.log('Elemento clicado a tempo')
+    //this. refere-se ao própio elemento HTML ou seja, `mosquito`
+    this.remove()
+  }
 
   document.body.appendChild(mosquito)
   
