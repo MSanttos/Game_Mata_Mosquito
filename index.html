@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<meta name="author" content="Michel Santos"/>
+<meta name="developer" content="https://www.linkedin.com/in/michel-santos-965002158/"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<script src="jogo.js"></script>
+<title>Iniciar</title>
+
+<script>
+  function iniciarJogo(){
+    //alert(document.getElementById('nivel').value)
+    var nivel = document.getElementById('nivel').value;
+
+    if(nivel === ''){
+      alert('Selecione um nível para iniciar o jogo')
+      return false
+    }
+    //alert(nivel)
+    //passar parametros de uma pagina para outra ex.: window.location.href="app.html?"+ `id` nivel 
+    window.location.href="app.html?" + nivel
+  }
+</script>
+
+</head>
+<!-- onresize + função mostra tamanho da tela-->
+<body onresize="ajustaTela();">
+
+  <!-- <img src="imagens/mosquito.png" alt="mosca1" class="mosquito"> -->
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="d-flex justify-content-center">
+          <img src="imagens/game.png" alt="game over">
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    <div class="row">
+      <div class="col">
+        <div class="d-flex justify-content-center">
+          <div class="mb-2">
+            <select class="form-control" name="nivel" id="nivel">
+              <option value="">-- Selecione o nível --</option>
+              <option value="normal">Normal</option>
+              <option value="dificil">Difícil</option>
+              <option value="chucknorris">Chuck Norris</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    <div class="row">
+      <div class="col">
+        <div class="d-flex justify-content-center">
+          <button type="button" class="btn btn-danger btn-lg" onclick="iniciarJogo();">Iniciar Jogo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  setInterval(()=>{
+    posicao_Randomica_Mosquito()
+  }, 1000)
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+</html>

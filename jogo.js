@@ -1,6 +1,24 @@
 var altura = 0
 var largura = 0
 var vidas = 1
+var tempo = 15
+
+var criaMosquitoTempo = 1500
+
+var nivel = window.location.search
+//alert(nivel.replace('?', ''))// ** alert(nivel) mostra o ? passado, para retirar o caracter usa-se => alert(nivel.replace('?', ''))
+nivel = nivel.replace('?', '')
+
+if(nivel === 'normal'){
+  //tempo de 1500 milissegundos
+  criaMosquitoTempo = 1500
+}else if(nivel === 'dificil'){
+  //tempo de 1000 milissegundos
+  criaMosquitoTempo = 1000
+}else if(nivel === 'chucknorris'){
+  //tempo de 750 milissegundos
+  criaMosquitoTempo = 750
+}
 
 function ajustaTela(){
   altura = window.innerHeight
@@ -10,6 +28,19 @@ function ajustaTela(){
 }
 
 ajustaTela()
+
+var cronometro = setInterval(function(){
+  tempo -=1
+  if(tempo < 0){
+    clearInterval(cronometro)
+    clearInterval(criaMosca)
+    //alert('Vitória')
+    window.location.href='vitoria.html'
+  }else{
+  //tudo dentro da tag é innerHTML
+  document.getElementById('cronometro').innerHTML = tempo
+  }
+}, 1000)
 
 
 function posicao_Randomica_Mosquito(){
@@ -21,7 +52,9 @@ function posicao_Randomica_Mosquito(){
     //após executar essa instrução vem o auto incremento de mais uma unidade dessa variável
     console.log('v' + vidas)
     if(vidas > 3){
-      alert('Uhm... que pena, GAME OVER')
+      clearInterval(criaMosca)
+      //alert('Uhm... que pena, GAME OVER')
+      window.location.href='fim_de_jogo.html'
     }else{
       document.getElementById('v' + vidas).src ="imagens/coracao_vazio.png"
       vidas++

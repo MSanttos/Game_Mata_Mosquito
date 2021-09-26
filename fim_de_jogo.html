@@ -11,30 +11,34 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link rel="stylesheet" href="style.css">
 <script src="jogo.js"></script>
-<title>Mata Mosquito</title>
+<title>Fim de Jogo</title>
 </head>
 <!-- onresize + função mostra tamanho da tela-->
 <body onresize="ajustaTela();">
 
   <!-- <img src="imagens/mosquito.png" alt="mosca1" class="mosquito"> -->
-  <div class="painel">
-    <div class="vidas">
-      <img id="v1" src="imagens/coracao_cheio.png" alt="coração vazio">
-      <img id="v2" src="imagens/coracao_cheio.png" alt="coração vazio">
-      <img id="v3" src="imagens/coracao_cheio.png" alt="coração vazio">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="d-flex justify-content-center">
+          <img src="imagens/game_over.png" alt="game over">
+        </div>
+      </div>
     </div>
-    <div class="cronometro">
-      Tempo restante: <span id="cronometro"></span>
+
+    <div class="row">
+      <div class="col">
+        <div class="d-flex justify-content-center">
+          <button type="button" class="btn btn-dark btn-lg" onclick="window.location.href='index.html'">Reiniciar</button>
+        </div>
+      </div>
     </div>
   </div>
 
 <script>
-
-  document.getElementById('cronometro').innerHTML = tempo
-
-  var criaMosca = setInterval(()=>{ // igual a isso => *** var criaMosca = setInterval(function(){ ***
+  setInterval(()=>{
     posicao_Randomica_Mosquito()
-  }, criaMosquitoTempo)
+  }, 1000)
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

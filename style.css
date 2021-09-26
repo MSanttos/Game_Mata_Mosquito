@@ -24,7 +24,7 @@ body{
 }
 .painel{
   position: absolute;
-  width: 190px;
+  width: 200px;
   padding: 10px;
   bottom: 0px;
   border-top: solid 1px #fff;
